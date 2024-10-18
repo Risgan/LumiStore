@@ -1,12 +1,12 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 
-const options = {
+const opciones = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'UniqueStyleAPI',
+            title: 'LumiAPI',
             version: '1.0.0',
-            description: 'Ecommerce API para Unique Style',
+            description: 'API de ecommerce modificada para Lumi',
         },
         servers: [
             {
@@ -22,45 +22,53 @@ const options = {
                 },
             },
             schemas: {
-                User: {
+                Usuario: {
                     type: 'object',
                     properties: {
-                        username: {
-                            type: 'string',
-                            example: 'JohnDoe',
+                        id: {
+                            type: 'integer',
+                            example: 1,
                         },
-                        email: {
+                        nombreUsuario: {
                             type: 'string',
-                            example: 'john@example.com',
+                            example: 'JuanPerez',
                         },
-                        password: {
+                        correo: {
                             type: 'string',
-                            example: 'password123',
+                            example: 'juan@ejemplo.com',
+                        },
+                        direccion: {
+                            type: 'string',
+                            example: 'Calle Falsa 123',
                         },
                         avatar: {
                             type: 'string',
-                            example: 'https://example.com/avatar.jpg',
+                            example: 'https://ejemplo.com/avatar.jpg',
                         },
-                        role: {
+                        rol: {
                             type: 'string',
-                            example: 'user',
+                            example: 'administrador',
                         },
                     },
                 },
-                Product: {
+                Producto: {
                     type: 'object',
                     properties: {
-                        name: {
+                        nombre: {
                             type: 'string',
-                            example: 'T-shirt',
+                            example: 'Camiseta',
                         },
-                        price: {
+                        precio: {
                             type: 'number',
-                            example: 29.99,
+                            example: 35.50,
+                        },
+                        descripcion: {
+                            type: 'string',
+                            example: 'Camiseta de algodón de alta calidad',
                         },
                         stock: {
                             type: 'number',
-                            example: 100,
+                            example: 200,
                         },
                     },
                 },
@@ -73,14 +81,14 @@ const options = {
         ],
         tags: [
             {
-                name: 'Products', // Añadir el tag 'Products' para agrupar las rutas relacionadas con productos
-                description: 'API para gestionar productos en UniqueStyle',
+                name: 'Productos', 
+                description: 'API para gestión avanzada de productos en Lumi',
             },
         ],
     },
-    apis: ['./src/routes/*.js', './src/controller/*.js'], // Asegúrate de que Swagger escanee todos los archivos relevantes
+    apis: ['./src/rutas/*.js', './src/controlador/*.js'],
 };
 
-const swaggerDocs = swaggerJsdoc(options);
+const swaggerDocumentacionModificada = swaggerJsdoc(opciones);
 
-module.exports = swaggerDocs;
+module.exports = swaggerDocumentacionModificada;

@@ -1,31 +1,31 @@
 const express = require('express');
 const { authMiddleware } = require('../middleware/authMiddleware'); // Middleware de autenticación
-const { auth } = require('../controller/authController'); // Controlador de autenticación
+const { autenticar } = require('../controlador/autenticarControlador'); // Controlador de autenticación
 const { 
-  getUsers, 
-  getUserById, 
-  createUser, 
-  updateUser, 
-  deleteUser 
-} = require('../controller/userController'); // Controlador de usuarios
+  obtenerUsuarios,
+  obtenerUsuarioPorId,
+  crearUsuario,
+  actualizarUsuario,
+  eliminarUsuario
+} = require('../controlador/usuarioControlador'); // Controlador de usuarios
 
 // Importar el controlador de productos
 const { 
-  getAllProducts, 
-  getProductById, 
-  createProduct, 
-  updateProduct, 
-  deleteProduct 
-} = require('../controller/productController'); // Controlador de productos
+  obtenerTodosLosProductos,
+  obtenerProductoPorId,
+  crearProducto,
+  actualizarProducto,
+  eliminarProducto
+} = require('../controlador/productoControlador'); // Controlador de productos
 
-const router = express.Router();
+const rutas = express.Router();
 
 /**
  * @swagger
  * /api/auth:
  *   post:
  *     tags: [auth]
- *     summary: Authenticate a user and retrieve a token
+ *     summary: Autenticar a un usuario y recuperar un token
  *     requestBody:
  *       required: true
  *       content:
@@ -33,15 +33,15 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               email:
+ *               correo:
  *                 type: string
- *                 example: admin@style.com
- *               password:
+ *                 example: admin@lumi.com
+ *               contraseña:
  *                 type: string
  *                 example: password
  *     responses:
  *       200:
- *         description: Token retrieved successfully.
+ *         description: Token recuperado exitosamente.
  *         content:
  *           application/json:
  *             schema:
@@ -49,31 +49,31 @@ const router = express.Router();
  *               properties:
  *                 token:
  *                   type: string
- *                   example: your.jwt.token.here
+ *                   example: Bearer Token
  *       401:
- *         description: Invalid credentials.
+ *         description: Credenciales invalidas.
  */
-router.post('/auth', auth); // Ruta para autenticación
+rutas.post('/auth', autenticar); // Ruta para autenticación
 
 // Rutas para el CRUD de usuarios
 /**
  * @swagger
- * /api/users:
+ * /api/usuarios:
  *   get:
- *     tags: [Users]
- *     summary: Retrieve all users
+ *     tags: [usuario]
+ *     summary: Recuperar todos los usuarios
  *     responses:
  *       200:
- *         description: Successfully retrieved all users.
+ *         description: Se recuperaron exitosamente todos los usuarios.
  */
-router.get('/users', authMiddleware, getUsers); // Obtener todos los usuarios
+rutas.get('/usuarios', authMiddleware, obtenerUsuarios); // Obtener todos los usuarios
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/usuarios/{id}:
  *   get:
- *     tags: [Users]
- *     summary: Retrieve a user by ID
+ *     tags: [usuario]
+ *     summary: Recuperar un usuario por ID
  *     parameters:
  *       - in: path
  *         name: id
@@ -83,18 +83,18 @@ router.get('/users', authMiddleware, getUsers); // Obtener todos los usuarios
  *         description: User ID
  *     responses:
  *       200:
- *         description: Successfully retrieved the user.
+ *         description: Recuperó con éxito el usuario.
  *       404:
- *         description: User not found.
+ *         description: Usuario no encontrado.
  */
-router.get('/users/:id', authMiddleware, getUserById); // Obtener usuario por ID
+rutas.get('/usuarios/:id', authMiddleware, obtenerUsuarioPorId); // Obtener usuario por ID
 
 /**
  * @swagger
- * /api/users:
+ * /api/usuarios:
  *   post:
- *     tags: [Users]
- *     summary: Create a new user
+ *     tags: [usuario]
+ *     summary: Crear un nuevo usuario
  *     requestBody:
  *       required: true
  *       content:
@@ -104,24 +104,24 @@ router.get('/users/:id', authMiddleware, getUserById); // Obtener usuario por ID
  *             properties:
  *               username:
  *                 type: string
- *               email:
+ *               correo:
  *                 type: string
- *               password:
+ *               contraseña:
  *                 type: string
  *     responses:
  *       201:
- *         description: User created successfully.
+ *         description: Usuario creado con éxito.
  *       400:
- *         description: Invalid input.
+ *         description: Entrada no válida.
  */
-router.post('/users', authMiddleware, createUser); // Crear un nuevo usuario
+rutas.post('/usuarios', authMiddleware, crearUsuario); // Crear un nuevo usuario
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/usuarios/{id}:
  *   put:
- *     tags: [Users]
- *     summary: Update a user by ID
+ *     tags: [usuario]
+ *     summary: Actualizar un usuario por ID
  *     parameters:
  *       - in: path
  *         name: id
@@ -138,9 +138,9 @@ router.post('/users', authMiddleware, createUser); // Crear un nuevo usuario
  *             properties:
  *               username:
  *                 type: string
- *               email:
+ *               correo:
  *                 type: string
- *               password:
+ *               contraseña:
  *                 type: string
  *               avatar:
  *                 type: string
@@ -148,73 +148,73 @@ router.post('/users', authMiddleware, createUser); // Crear un nuevo usuario
  *                 type: string
  *     responses:
  *       200:
- *         description: User updated successfully.
+ *         description: Usuario actualizado exitosamente.
  *       404:
- *         description: User not found.
+ *         description: Usuario no encontrado.
  */
-router.put('/users/:id', authMiddleware, updateUser); // Actualizar usuario por ID
+rutas.put('/usuarios/:id', authMiddleware, actualizarUsuario); // Actualizar usuario por ID
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/usuarios/{id}:
  *   delete:
- *     tags: [Users]
- *     summary: Delete a user by ID
+ *     tags: [usuario]
+ *     summary: Eliminar un usuario por ID
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: User ID
+ *         description: ID de usuario
  *     responses:
  *       200:
- *         description: User deleted successfully.
+ *         description: Usuario eliminado exitosamente.
  *       404:
- *         description: User not found.
+ *         description: Usuario no encontrado.
  */
-router.delete('/users/:id', authMiddleware, deleteUser); // Eliminar usuario por ID
+rutas.delete('/usuarios/:id', authMiddleware, eliminarUsuario); // Eliminar usuario por ID
 
 // Rutas para el CRUD de productos
 /**
  * @swagger
- * /api/products:
+ * /api/productos:
  *   get:
- *     tags: [Products]
- *     summary: Retrieve all products
+ *     tags: [Productos]
+ *     summary: Recuperar todos los productos
  *     responses:
  *       200:
- *         description: Successfully retrieved all products.
+ *         description: Se recuperaron exitosamente todos los productos.
  */
-router.get('/products', authMiddleware, getAllProducts); // Obtener todos los productos
+rutas.get('/productos', authMiddleware, obtenerTodosLosProductos); // Obtener todos los productos
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /api/productos/{id}:
  *   get:
- *     tags: [Products]
- *     summary: Retrieve a product by ID
+ *     tags: [Productos]
+ *     summary: Recuperar un producto por ID
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: Product ID
+ *         description: ID del producto
  *     responses:
  *       200:
- *         description: Successfully retrieved the product.
+ *         description: Se recuperó exitosamente el producto.
  *       404:
- *         description: Product not found.
+ *         description: Producto no encontrado.
  */
-router.get('/products/:id', authMiddleware, getProductById); // Obtener producto por ID
+rutas.get('/productos/:id', authMiddleware, obtenerProductoPorId); // Obtener producto por ID
 
 /**
  * @swagger
- * /api/products:
+ * /api/productos:
  *   post:
- *     tags: [Products]
- *     summary: Create a new product
+ *     tags: [Productos]
+ *     summary: Crear un nuevo producto
  *     requestBody:
  *       required: true
  *       content:
@@ -234,25 +234,25 @@ router.get('/products/:id', authMiddleware, getProductById); // Obtener producto
  *                   type: string
  *     responses:
  *       201:
- *         description: Product created successfully.
+ *         description: Producto creado exitosamente.
  *       400:
- *         description: Invalid input.
+ *         description: Entrada no válida.
  */
-router.post('/products', authMiddleware, createProduct); // Crear un nuevo producto
+rutas.post('/productos', authMiddleware, crearProducto); // Crear un nuevo producto
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /api/productos/{id}:
  *   put:
- *     tags: [Products]
- *     summary: Update a product by ID
+ *     tags: [Productos]
+ *     summary: Actualizar un producto por ID
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: Product ID
+ *         description: ID del producto
  *     requestBody:
  *       required: true
  *       content:
@@ -272,31 +272,31 @@ router.post('/products', authMiddleware, createProduct); // Crear un nuevo produ
  *                   type: string
  *     responses:
  *       200:
- *         description: Product updated successfully.
+ *         description: Producto actualizado exitosamente.
  *       404:
- *         description: Product not found.
+ *         description: Producto no encontrado.
  */
-router.put('/products/:id', authMiddleware, updateProduct); // Actualizar producto por ID
+rutas.put('/productos/:id', authMiddleware, actualizarProducto); // Actualizar producto por ID
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /api/productos/{id}:
  *   delete:
- *     tags: [Products]
- *     summary: Delete a product by ID
+ *     tags: [Productos]
+ *     summary: Eliminar un producto por ID
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: Product ID
+ *         description: ID del producto
  *     responses:
  *       200:
- *         description: Product deleted successfully.
+ *         description: Producto eliminado exitosamente.
  *       404:
- *         description: Product not found.
+ *         description: Producto no encontrado.
  */
-router.delete('/products/:id', authMiddleware, deleteProduct); // Eliminar producto por ID
+rutas.delete('/productos/:id', authMiddleware, eliminarProducto); // Eliminar producto por ID
 
-module.exports = router;
+module.exports = rutas;

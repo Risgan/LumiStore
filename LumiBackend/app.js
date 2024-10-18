@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const routes = require('./src/routes/routes');
+const routes = require('./src/rutas/rutas');
 app.use('/api', routes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
