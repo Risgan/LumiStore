@@ -73,16 +73,54 @@
    ![alt text](image-18.png)
 
 ## Backend
-   Se realiza en Node.JS version 20.`
+
+### Requisitos
+   - Tener instalado node en la ultima version o version 20.10.0 como minimo, el cual se puede descargar de esta url: https://nodejs.org/en/download/package-manager
+
+   - Desde powershell o cmd usando el comando **node -v** podemos saber si tenemos el node instalado en el sistema
 
 ![alt text](image.png)
 
+### Descarga de Repositorio
 
-Estos paquetes son los que se utilizaron para la configuracion del proyecto
+1. Dentro de la pantalla principal de GitHub vamos a encontrar todos los proyectos, vamos a la pestaña de **Repositories** buscamos **LumiStore** y damos **Click**
 
+![alt text](image-19.png)
+
+![alt text](image-20.png)
+
+![alt text](image-21.png)
+
+2. una vez adentro vamos a validar que estemos en la rama **Main** y damos click en el boton **Code**
+
+![alt text](image-22.png)
+
+3. En la lista que se abre vamos a dar click en **Download ZIP**
+
+![alt text](image-23.png)
+
+![alt text](image-24.png)
+
+4. Descomprimimos el contenido en una carpeta donde vamos a tener el proyecto almacenado y con el programa **Visual Studio Code** abriremos la carpeta **LumiBackend**.
+
+![alt text](image-25.png)
+
+![alt text](image-26.png)
+
+5. Una vez abierto veremos los siguientes archivos:
+
+![alt text](image-27.png)
+
+
+
+### Instalación paquetes necesarios. 
+
+Estos paquetes son los que se utilizaron para la configuracion del proyecto *(Estos se ejecutan en la terminal de visual studio code)*
+
+0. Estos comandos no se deben ejecutar, se ponen en este apartado para que se sepa que se instalo para el proyecto.
 ```C#
 
-/*------- No se deben ejecutar solo para terminos de documentación --------- */
+/*------- No se deben ejecutar, solo para terminos de documentación --------- */
 
 // Crear proyecto
 npm init -y
@@ -112,6 +150,8 @@ npm install bcrypt
 
 ```
 
+1. Solo ejecutamos el siguiente comando puesto que ya existe un archivo llamado **package.json** el que tiene todas las dependencias necesarias para la ejecución del proyecto.
+
 ```C#
 /* ------ Este si se debe ejecutar para que instale todos los paquetes necesarios ------ */
 
@@ -119,6 +159,33 @@ npm install bcrypt
 npm install
 
 ```
+2. una vez ejecutado se van a instalar todos los paquetes que requiere el proyecto.
+
+![alt text](image-28.png)
+
+![alt text](image-29.png)
+
+3. debe aparecer en nuestro arbol de proyecto una carpeta llamada **node_modules**
+
+![alt text](image-30.png)
+
+
+### Iniciar el Proyecto
+
+1. Ejecutamos uno de los siguientes codigos para que el proyecto corra y podamos acceder a el.
+
+```C#
+npm run start // Inica el proyecto en modo producción
+npm run dev // Inica el proyecto en modo desarrollo
+```
+
+2. Una vez inice veremos este mensaje en la consola, lo cual nos indica que el proyecto esta escuchando por el puerto **3000**
+
+![alt text](image-31.png)
+
+3. Para validar que este funcionando correctamente, ingresamos a nuestro navegador y ponemos la url **http://localhost:3000/api-docs** donde veremos una interfaz de Swagger con las peticiones disponibles del proyecto.
+
+![alt text](image-32.png)
 
 ## Fontend
   Se realizara en Angular 18.
