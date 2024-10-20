@@ -72,6 +72,28 @@
 
    ![alt text](image-18.png)
 
+   13. Vamos a ** configuracion**, y damos click en **Configuracion del proyecto**
+
+   ![alt text](image-33.png)
+
+   ![alt text](image-34.png)
+
+   ![alt text](image-35.png)
+
+   ![alt text](image-36.png)
+
+   ![alt text](image-37.png)
+
+   ```C#
+   apiKey: "AIzaSyDKWyEqTkYaFsj20mXrFg8hhtytBiiKgvo",
+   authDomain: "lumidatabase-9ee93.firebaseapp.com",
+   projectId: "lumidatabase-9ee93",
+   storageBucket: "lumidatabase-9ee93.appspot.com",
+   messagingSenderId: "462941060181",
+   appId: "1:462941060181:web:1a35570f869f2a709a68dc",
+   measurementId: "G-N2NN0PCR7X"
+   ```
+
 ## Backend
 
 ### Requisitos
@@ -186,6 +208,14 @@ npm run dev // Inica el proyecto en modo desarrollo
 3. Para validar que este funcionando correctamente, ingresamos a nuestro navegador y ponemos la url **http://localhost:3000/api-docs** donde veremos una interfaz de Swagger con las peticiones disponibles del proyecto.
 
 ![alt text](image-32.png)
+
+
+
+![alt text](image-38.png)
+
+![alt text](image-39.png)
+
+![alt text](image-40.png)
 
 ## Fontend
   Se realizara en Angular 18.
