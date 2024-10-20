@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./src/swagger/swagger');
+const swaggerJsdoc = require('./src/swagger/swagger'); 
 require('dotenv').config();
 
 const app = express();
@@ -14,6 +15,11 @@ const routes = require('./src/rutas/rutas');
 app.use('/api', routes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+app.get('/swagger.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerDocs);
+});
 
 require('dotenv').config();
 
