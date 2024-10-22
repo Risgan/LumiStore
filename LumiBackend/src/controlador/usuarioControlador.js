@@ -36,6 +36,10 @@ const obtenerUsuarioPorId = async (req, res) => {
 const crearUsuario = async (req, res) => {
   const { nombreUsuario, correo, contraseña } = req.body;
 
+
+  console.log(nombreUsuario, correo, contraseña, !nombreUsuario, !correo , !contraseña, !nombreUsuario || !correo || !contraseña);
+  
+
   // Validación básica
   if (!nombreUsuario || !correo || !contraseña) {
     return res.status(400).json({ mensaje: 'El nombre de usuario, correo y contraseña son obligatorios' });

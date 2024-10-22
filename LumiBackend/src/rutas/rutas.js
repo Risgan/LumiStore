@@ -102,7 +102,7 @@ rutas.get('/usuarios/:id', authMiddleware, obtenerUsuarioPorId); // Obtener usua
  *           schema:
  *             type: object
  *             properties:
- *               username:
+ *               nombreUsuario:
  *                 type: string
  *               correo:
  *                 type: string
@@ -136,7 +136,7 @@ rutas.post('/usuarios', authMiddleware, crearUsuario); // Crear un nuevo usuario
  *           schema:
  *             type: object
  *             properties:
- *               username:
+ *               nombreUsuario:
  *                 type: string
  *               correo:
  *                 type: string

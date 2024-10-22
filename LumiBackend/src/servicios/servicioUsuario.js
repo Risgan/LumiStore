@@ -3,11 +3,12 @@ const ModeloUsuario = require('../modelos/modeloUsuario');
 const bcrypt = require('bcrypt');
 
 // Crear un nuevo usuario
-const crearUsuario = async ({ username, email, password }) => {
+const crearUsuario = async ({ nombreUsuario, correo, contraseña  }) => {
     // Crear una instancia del modelo con los datos proporcionados
+    console.log(nombreUsuario, correo, contraseña);
     const saltRounds = 10;
-    const passwordEncriptada = await bcrypt.hash(password, saltRounds);
-    const usuario = new ModeloUsuario({ username, email, contraseña: passwordEncriptada });
+    const passwordEncriptada = await bcrypt.hash(contraseña , saltRounds);
+    const usuario = new ModeloUsuario({ nombreUsuario, correo, contraseña: passwordEncriptada });
 
     // Llamar al repositorio para guardar el usuario en Firebase
     return await repositorioUsuario.crearUsuario(usuario);
