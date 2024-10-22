@@ -10,7 +10,7 @@ const opciones = {
         },
         servers: [
             {
-                url: 'http://localhost:3000',
+                url: 'https://lumistore-production.up.railway.app',
             },
         ],
         components: {
