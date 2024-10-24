@@ -7,22 +7,22 @@ class ProductService {
     }
 
     // Obtener todos los productos
-    async getAllProducts() {
+    async obtenerTodosLosProductos() {
         return await productRepository.obtenerTodosLosProductos();
     }
 
     // Obtener un producto por ID
-    async getProductById(id) {
+    async obtenerProductoPorId(id) {
         return await productRepository.obtenerProductoPorId(id);
     }
 
     // Actualizar un producto por ID
-    async updateProduct(id, updatedData) {
+    async actualizarProducto(id, updatedData) {
         return await productRepository.actualizarProducto(id, updatedData);
     }
 
     // Eliminar un producto por ID
-    async deleteProduct(id) {
+    async eliminarProducto(id) {
         return await productRepository.eliminarProducto(id);
     }
 }
