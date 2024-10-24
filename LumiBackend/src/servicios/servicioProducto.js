@@ -3,7 +3,7 @@ const productRepository = require('../repositorios/repositorioProducto');
 class ProductService {
     // Crear un nuevo producto
     async createProduct(productData) {
-        return await productRepository.createProduct(productData);
+        return await productRepository.crearProducto(productData);
     }
 
     // Obtener todos los productos
