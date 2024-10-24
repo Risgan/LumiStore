@@ -42,7 +42,7 @@ const crearProducto = async (req, res) => {
     }
 
     try {
-        const nuevoProducto = await productService.crearProducto({ titulo, precio, descripcion, imagenes });
+        const nuevoProducto = await productService.createProduct({ titulo, precio, descripcion, imagenes });
         res.status(201).json(nuevoProducto);
     } catch (error) {
         res.status(500).json({ mensaje: 'Error al crear producto', error: error.message });
