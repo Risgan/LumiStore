@@ -8,22 +8,22 @@ class ProductService {
 
     // Obtener todos los productos
     async getAllProducts() {
-        return await productRepository.getAllProducts();
+        return await productRepository.obtenerTodosLosProductos();
     }
 
     // Obtener un producto por ID
     async getProductById(id) {
-        return await productRepository.getProductById(id);
+        return await productRepository.obtenerProductoPorId(id);
     }
 
     // Actualizar un producto por ID
     async updateProduct(id, updatedData) {
-        return await productRepository.updateProduct(id, updatedData);
+        return await productRepository.actualizarProducto(id, updatedData);
     }
 
     // Eliminar un producto por ID
     async deleteProduct(id) {
-        return await productRepository.deleteProduct(id);
+        return await productRepository.eliminarProducto(id);
     }
 }
 

@@ -41,7 +41,7 @@ const rutas = express.Router();
  *                 example: password
  *     responses:
  *       200:
- *         description: Token recuperado exitosamente.
+ *         descripcion: Token recuperado exitosamente.
  *         content:
  *           application/json:
  *             schema:
@@ -51,7 +51,7 @@ const rutas = express.Router();
  *                   type: string
  *                   example: Bearer Token
  *       401:
- *         description: Credenciales invalidas.
+ *         descripcion: Credenciales invalidas.
  */
 rutas.post('/auth', autenticar); // Ruta para autenticación
 
@@ -64,7 +64,7 @@ rutas.post('/auth', autenticar); // Ruta para autenticación
  *     summary: Recuperar todos los usuarios
  *     responses:
  *       200:
- *         description: Se recuperaron exitosamente todos los usuarios.
+ *         descripcion: Se recuperaron exitosamente todos los usuarios.
  */
 rutas.get('/usuarios', authMiddleware, obtenerUsuarios); // Obtener todos los usuarios
 
@@ -80,12 +80,12 @@ rutas.get('/usuarios', authMiddleware, obtenerUsuarios); // Obtener todos los us
  *         schema:
  *           type: string
  *         required: true
- *         description: User ID
+ *         descripcion: User ID
  *     responses:
  *       200:
- *         description: Recuperó con éxito el usuario.
+ *         descripcion: Recuperó con éxito el usuario.
  *       404:
- *         description: Usuario no encontrado.
+ *         descripcion: Usuario no encontrado.
  */
 rutas.get('/usuarios/:id', authMiddleware, obtenerUsuarioPorId); // Obtener usuario por ID
 
@@ -110,9 +110,9 @@ rutas.get('/usuarios/:id', authMiddleware, obtenerUsuarioPorId); // Obtener usua
  *                 type: string
  *     responses:
  *       201:
- *         description: Usuario creado con éxito.
+ *         descripcion: Usuario creado con éxito.
  *       400:
- *         description: Entrada no válida.
+ *         descripcion: Entrada no válida.
  */
 rutas.post('/usuarios', authMiddleware, crearUsuario); // Crear un nuevo usuario
 
@@ -128,7 +128,7 @@ rutas.post('/usuarios', authMiddleware, crearUsuario); // Crear un nuevo usuario
  *         schema:
  *           type: string
  *         required: true
- *         description: User ID
+ *         descripcion: User ID
  *     requestBody:
  *       required: true
  *       content:
@@ -148,9 +148,9 @@ rutas.post('/usuarios', authMiddleware, crearUsuario); // Crear un nuevo usuario
  *                 type: string
  *     responses:
  *       200:
- *         description: Usuario actualizado exitosamente.
+ *         descripcion: Usuario actualizado exitosamente.
  *       404:
- *         description: Usuario no encontrado.
+ *         descripcion: Usuario no encontrado.
  */
 rutas.put('/usuarios/:id', authMiddleware, actualizarUsuario); // Actualizar usuario por ID
 
@@ -166,12 +166,12 @@ rutas.put('/usuarios/:id', authMiddleware, actualizarUsuario); // Actualizar usu
  *         schema:
  *           type: string
  *         required: true
- *         description: ID de usuario
+ *         descripcion: ID de usuario
  *     responses:
  *       200:
- *         description: Usuario eliminado exitosamente.
+ *         descripcion: Usuario eliminado exitosamente.
  *       404:
- *         description: Usuario no encontrado.
+ *         descripcion: Usuario no encontrado.
  */
 rutas.delete('/usuarios/:id', authMiddleware, eliminarUsuario); // Eliminar usuario por ID
 
@@ -184,7 +184,7 @@ rutas.delete('/usuarios/:id', authMiddleware, eliminarUsuario); // Eliminar usua
  *     summary: Recuperar todos los productos
  *     responses:
  *       200:
- *         description: Se recuperaron exitosamente todos los productos.
+ *         descripcion: Se recuperaron exitosamente todos los productos.
  */
 rutas.get('/productos', authMiddleware, obtenerTodosLosProductos); // Obtener todos los productos
 
@@ -200,12 +200,12 @@ rutas.get('/productos', authMiddleware, obtenerTodosLosProductos); // Obtener to
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del producto
+ *         descripcion: ID del producto
  *     responses:
  *       200:
- *         description: Se recuperó exitosamente el producto.
+ *         descripcion: Se recuperó exitosamente el producto.
  *       404:
- *         description: Producto no encontrado.
+ *         descripcion: Producto no encontrado.
  */
 rutas.get('/productos/:id', authMiddleware, obtenerProductoPorId); // Obtener producto por ID
 
@@ -222,21 +222,21 @@ rutas.get('/productos/:id', authMiddleware, obtenerProductoPorId); // Obtener pr
  *           schema:
  *             type: object
  *             properties:
- *               title:
+ *               titulo:
  *                 type: string
- *               price:
+ *               precio:
  *                 type: number
- *               description:
+ *               descripcion:
  *                 type: string
- *               images:
+ *               imagenes:
  *                 type: array
  *                 items:
  *                   type: string
  *     responses:
  *       201:
- *         description: Producto creado exitosamente.
+ *         descripcion: Producto creado exitosamente.
  *       400:
- *         description: Entrada no válida.
+ *         descripcion: Entrada no válida.
  */
 rutas.post('/productos', authMiddleware, crearProducto); // Crear un nuevo producto
 
@@ -252,7 +252,7 @@ rutas.post('/productos', authMiddleware, crearProducto); // Crear un nuevo produ
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del producto
+ *         descripcion: ID del producto
  *     requestBody:
  *       required: true
  *       content:
@@ -260,21 +260,21 @@ rutas.post('/productos', authMiddleware, crearProducto); // Crear un nuevo produ
  *           schema:
  *             type: object
  *             properties:
- *               title:
+ *               titulo:
  *                 type: string
- *               price:
+ *               precio:
  *                 type: number
- *               description:
+ *               descripcion:
  *                 type: string
- *               images:
+ *               imagenes:
  *                 type: array
  *                 items:
  *                   type: string
  *     responses:
  *       200:
- *         description: Producto actualizado exitosamente.
+ *         descripcion: Producto actualizado exitosamente.
  *       404:
- *         description: Producto no encontrado.
+ *         descripcion: Producto no encontrado.
  */
 rutas.put('/productos/:id', authMiddleware, actualizarProducto); // Actualizar producto por ID
 
@@ -290,12 +290,12 @@ rutas.put('/productos/:id', authMiddleware, actualizarProducto); // Actualizar p
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del producto
+ *         descripcion: ID del producto
  *     responses:
  *       200:
- *         description: Producto eliminado exitosamente.
+ *         descripcion: Producto eliminado exitosamente.
  *       404:
- *         description: Producto no encontrado.
+ *         descripcion: Producto no encontrado.
  */
 rutas.delete('/productos/:id', authMiddleware, eliminarProducto); // Eliminar producto por ID
 
