@@ -9,15 +9,70 @@
             </div>
             <div class="acciones">
                 <div class="carrito">
-                    <p-button icon="pi pi-shopping-cart" />
+                    <p-button icon="pi pi-shopping-cart" (onClick)="goCarrito()" />
+                    <!-- <i class="pi pi-bell text-3xl" pBadge value="2"></i> -->
+
                 </div>
                 <div class="usuario">
                     <p-button icon="pi pi-user" />
-    
+
                 </div>
             </div>
-        </div>    
+        </div>
     </header>
-    <main></main>
-    <footer></footer>
 </div>
+
+<main>
+
+    <div class="carrusel">
+
+        <p-carousel [value]="banner" [numVisible]="1" [numScroll]="1" [circular]="true" autoplayInterval="3000"
+            [responsiveOptions]="responsiveOptions">
+            <ng-template let-ban pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 p-3">
+                    <div class="mb-3">
+                        <div class="relative mx-auto center-image">
+                            <img src="{{ ban.image }}" class="w-full border-round imagen-recorte" />
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    <button (click)="loadData()">test</button>
+    <!-- <img src="/Images/Productos/1.jpg" alt=""> -->
+    
+
+    <div class="products">
+        @for (producto of productos; track $index) {
+        <div class="tarjeta">
+            <div class="nombre">
+                <h3>{{producto.titulo}}</h3>
+            </div>
+            <div class="images">
+                <!-- <img src="/Images/Productos/1.jpg" alt=""> -->
+                 @if (producto.imagenes) {
+                     <img src="data:image/jpeg;base64,{{producto.imagenes[0]}}" alt="">
+                 }
+            </div>
+            <div class="descripcion">
+                <p>{{producto.descripcion}}</p>
+            </div>
+            <div class="p-tarjeta">
+
+                <div class="precio">
+                    <p>{{producto.precio | currency:'USD':'symbol':'1.0-0' }}</p>
+                </div>
+
+                <div class="add-cart">
+                    <p-button  icon="pi pi-shopping-cart" class="p-button-rounded p-button-success"
+                        (click)="agregarCarrito(producto)"></p-button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+</main>
+<footer></footer>
