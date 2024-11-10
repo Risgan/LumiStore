@@ -9,8 +9,15 @@
             </div>
             <div class="acciones">
                 <div class="carrito">
-                    <p-button icon="pi pi-shopping-cart" (onClick)="goCarrito()" />
-                    <!-- <i class="pi pi-bell text-3xl" pBadge value="2"></i> -->
+                    @if (selectedProduct) {
+                        <p-button icon="pi pi-shopping-cart" (onClick)="goCarrito()">
+                            @if (selectedProduct.length > 0) {
+                            <div class="badge">
+                                <p-badge [value]="selectedProduct.length" severity="danger" />
+                            </div>
+                            }
+                        </p-button>
+                    }
 
                 </div>
                 <div class="usuario">
@@ -26,7 +33,7 @@
 
     <div class="carrusel">
 
-        <p-carousel [value]="banner" [numVisible]="1" [numScroll]="1" [circular]="true" autoplayInterval="3000"
+        <p-carousel [value]="banner" [numVisible]="3" [numScroll]="1" [circular]="true" autoplayInterval="3000"
             [responsiveOptions]="responsiveOptions">
             <ng-template let-ban pTemplate="item">
                 <div class="border-1 surface-border border-round m-2 p-3">
@@ -39,10 +46,6 @@
             </ng-template>
         </p-carousel>
     </div>
-
-    <button (click)="loadData()">test</button>
-    <!-- <img src="/Images/Productos/1.jpg" alt=""> -->
-    
 
     <div class="products">
         @for (producto of productos; track $index) {

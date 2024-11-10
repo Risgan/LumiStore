@@ -1,16 +1,18 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
 import { Producto } from '../../models/producto';
 import { ProductoService } from '../../services/producto.service';
 import { Router } from '@angular/router';
+import { BadgeModule } from 'primeng/badge';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [ButtonModule, CarouselModule],
+  imports: [ButtonModule, CarouselModule, BadgeModule],
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.scss'] // Cambié 'styleUrl' a 'styleUrls'
+  styleUrls: ['./inicio.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class InicioComponent implements OnInit, AfterViewInit {
 
@@ -28,6 +30,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
   ];
 
   productos: Producto[] = []; 
+  selectedProduct: Producto[] = this.productoService.getProductCart();
 
   constructor(
     private readonly productoService: ProductoService,
@@ -36,7 +39,10 @@ export class InicioComponent implements OnInit, AfterViewInit {
   
 
   ngOnInit() {
-    this.loadData();
+    // setTimeout(() => {
+      
+      this.loadData();
+    // }, 6000);
 
   }
 
@@ -54,13 +60,20 @@ export class InicioComponent implements OnInit, AfterViewInit {
     });
   }
 
-  agregarCarrito(producto: Producto) {
-    console.log('Agregando al carrito:', producto);
+  async agregarCarrito(producto: Producto) {
 
+    await this.productoService.setProductCart(producto)
+    await this.productoService.getProductCart();
 
   }
 
   goCarrito(){
+    // this.productoService.
+    // this.productoService.getProductos().subscribe( (productos: any) => {
+    //   console.log(productos, productos.length);
+    // });
     this.router.navigate(['/carrito']);
   }
+
+  
 }

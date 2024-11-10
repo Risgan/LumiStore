@@ -11,6 +11,8 @@ export class ProductoService {
   private apiUrl = 'https://lumistore-production.up.railway.app/api/productos'
   // private apiUrl = 'http://localhost:3000/api/productos'
 
+  listCart: Producto[] = [];
+
   constructor(private http: HttpClient) { }
 
   getProductos(): Observable<Producto[]> {
@@ -31,6 +33,22 @@ export class ProductoService {
 
   deleteProducto(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  setProductCart(producto: Producto): void {
+    this.listCart.push(producto);
+  }
+
+  getProductCart(): Producto[] {
+    return this.listCart;
+  }
+
+  deleteProductCart(id: string): void {
+    this.listCart = this.listCart.filter(producto => producto.id !== id);
+  }
+
+  deleteAllProductCart(): void {
+    this.listCart = [];
   }
 
 }

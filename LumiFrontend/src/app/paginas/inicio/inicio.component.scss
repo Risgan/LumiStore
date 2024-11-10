@@ -65,7 +65,7 @@
 }
 
 .carrusel {
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .tarjeta {
@@ -115,4 +115,10 @@
         height: 120px;
         border-radius: 12px;
     }
+}
+
+.p-badge{
+    position: absolute;
+    right: 1px;
+    top: 1px;
 }
