@@ -216,7 +216,25 @@ npm run dev // Inica el proyecto en modo desarrollo
 
 
 ## Fontend
-  Se realizara en Angular 18.
+
+**Se realizara en Angular 18.**
+
+Descarga Node.js:
+
+Ve al sitio oficial de Node.js: https://nodejs.org.
+
+Instala desde la consola del equipo
+
+```C#
+
+npm install -g @angular
+
+```
+
+
+**Estos comandos son para documentacion solo de conocimiento no se deben ejecutar**
+
+Se usan los siguientes comandos para crear el programa del front
 
 
 ```javascript
@@ -229,3 +247,39 @@ seleccionamos {{SCSS}}
 Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? se pone como Y
 
 ```
+**Se debe ejecuta solo una vez cuando se va a iniciar el programa por primera vez**
+
+```javascript
+   npm install
+```
+
+
+** Para iniciar el programa de debe ejecugar **
+
+```javascript
+   ng serve -o
+```
+
+Este comando les abria el navegador el cual se vera de la siguiente manera.
+![alt text](./Images/image-38.png)
+
+![alt text](./Images/image-39.png)
+
+Una vez logueado se va a ver la siguiente pagina
+
+![alt text](./Images/image-40.png)
+
+en ella se tiene el home de la tienda
+
+Se añaden los productos y e ven de la siguiente manera encima del carrito
+
+![alt text](./Images/image-41.png)
+
+si se da clic al carrito se va a la zona de compra
+
+![alt text](./Images/image-42.png)
+
+En el menu de la izquierda aparecen las carpetas y archivos de la logica de la tienda.
+
+![alt text](./Images/image-43.png)
+s
