@@ -9,51 +9,51 @@
    
    2. damos click en **ir a consola** o **Go to console**
 
-   ![alt text](image-1.png)
+   ![alt text](./Images/image-1.png)
 
    3. Damos click en **Comenzar con un proyecto de Firebase**
 
-   ![alt text](image-2.png)
+   ![alt text](./Images/image-2.png)
 
    4. Añadimos un nombre a la base de datos **LumiDataBase**
 
-   ![alt text](image-3.png)
+   ![alt text](./Images/image-3.png)
 
    5. Damos en **continuar**
 
-   ![alt text](image-4.png)
+   ![alt text](./Images/image-4.png)
 
    6. Seleccionamos una cuenta **Default Account for Firebase** y damos click en **Crear Proyeto**
 
-   ![alt text](image-5.png)
+   ![alt text](./Images/image-5.png)
 
    7. Una vez en el Dashboard vamos a añadir **Firestore**, en el menu de la derecha vamos a **Compilación** y buscamos **Firestore Database**
 
-   ![alt text](image-6.png)
+   ![alt text](./Images/image-6.png)
 
-   ![alt text](image-7.png)
+   ![alt text](./Images/image-7.png)
 
    8. Se debe ver una ventana donde podemos ver el boton **Crear base de datos** en la mitad de la pantalla, damos **click** en este boton 
 
-   ![alt text](image-8.png)
+   ![alt text](./Images/image-8.png)
 
    9. Damos click en **Siguiente**, seleccionamos **Comenzar en modo de prueba** y damos click en **Crear**
 
-   ![alt text](image-9.png)
+   ![alt text](./Images/image-9.png)
 
-   ![alt text](image-10.png)
+   ![alt text](./Images/image-10.png)
 
    10. Veremos ya la pantalla con la base de datos creada
 
-   ![alt text](image-11.png)
+   ![alt text](./Images/image-11.png)
 
    11. Damos click en **Iniciar colección**, añadiremos **Usuarios**, damos click en el boton **Id automatico** y añadimos los siguientes datos, esto para tener el usuario administrador del sistema que es indispensable tenerlo para poder acceder a las funciones, damos click en **Guardar**.
 
-   ![alt text](image-12.png)
+   ![alt text](./Images/image-12.png)
 
-   ![alt text](image-13.png)
+   ![alt text](./Images/image-13.png)
 
-   ![alt text](image-14.png)
+   ![alt text](./Images/image-14.png)
 
    ```C#
    nombreUsuario = 'admin'
@@ -62,27 +62,27 @@
    avatar = ''
    rol = 'admin'
    ```
-   ![alt text](image-15.png)
+   ![alt text](./Images/image-15.png)
 
    12. vamos a la pestaña **Reglas**, y vamos a cambiar la fecha **timestamp.date** y damos click en **Publicar**, esto para que permita realizar peticiones hasta la fecha puesta
 
-   ![alt text](image-16.png)
+   ![alt text](./Images/image-16.png)
 
-   ![alt text](image-17.png)
+   ![alt text](./Images/image-17.png)
 
-   ![alt text](image-18.png)
+   ![alt text](./Images/image-18.png)
 
    13. Vamos a ** configuracion**, y damos click en **Configuracion del proyecto**
 
-   ![alt text](image-33.png)
+   ![alt text](./Images/image-33.png)
 
-   ![alt text](image-34.png)
+   ![alt text](./Images/image-34.png)
 
-   ![alt text](image-35.png)
+   ![alt text](./Images/image-35.png)
 
-   ![alt text](image-36.png)
+   ![alt text](./Images/image-36.png)
 
-   ![alt text](image-37.png)
+   ![alt text](./Images/image-37.png)
 
    ```C#
    apiKey: "AIzaSyDKWyEqTkYaFsj20mXrFg8hhtytBiiKgvo",
@@ -101,37 +101,37 @@
 
    - Desde powershell o cmd usando el comando **node -v** podemos saber si tenemos el node instalado en el sistema
 
-![alt text](image.png)
+![alt text](./Images/image.png)
 
 ### Descarga de Repositorio
 
 1. Dentro de la pantalla principal de GitHub vamos a encontrar todos los proyectos, vamos a la pestaña de **Repositories** buscamos **LumiStore** y damos **Click**
 
-![alt text](image-19.png)
+![alt text](./Images/image-19.png)
 
-![alt text](image-20.png)
+![alt text](./Images/image-20.png)
 
-![alt text](image-21.png)
+![alt text](./Images/image-21.png)
 
 2. una vez adentro vamos a validar que estemos en la rama **Main** y damos click en el boton **Code**
 
-![alt text](image-22.png)
+![alt text](./Images/image-22.png)
 
 3. En la lista que se abre vamos a dar click en **Download ZIP**
 
-![alt text](image-23.png)
+![alt text](./Images/image-23.png)
 
-![alt text](image-24.png)
+![alt text](./Images/image-24.png)
 
 4. Descomprimimos el contenido en una carpeta donde vamos a tener el proyecto almacenado y con el programa **Visual Studio Code** abriremos la carpeta **LumiBackend**.
 
-![alt text](image-25.png)
+![alt text](./Images/image-25.png)
 
-![alt text](image-26.png)
+![alt text](./Images/image-26.png)
 
 5. Una vez abierto veremos los siguientes archivos:
 
-![alt text](image-27.png)
+![alt text](./Images/image-27.png)
 
 
 
@@ -183,13 +183,13 @@ npm install
 ```
 2. una vez ejecutado se van a instalar todos los paquetes que requiere el proyecto.
 
-![alt text](image-28.png)
+![alt text](./Images/image-28.png)
 
-![alt text](image-29.png)
+![alt text](./Images/image-29.png)
 
 3. debe aparecer en nuestro arbol de proyecto una carpeta llamada **node_modules**
 
-![alt text](image-30.png)
+![alt text](./Images/image-30.png)
 
 
 ### Iniciar el Proyecto
@@ -203,11 +203,11 @@ npm run dev // Inica el proyecto en modo desarrollo
 
 2. Una vez inice veremos este mensaje en la consola, lo cual nos indica que el proyecto esta escuchando por el puerto **3000**
 
-![alt text](image-31.png)
+![alt text](./Images/image-31.png)
 
 3. Para validar que este funcionando correctamente, ingresamos a nuestro navegador y ponemos la url **http://localhost:3000/api-docs** donde veremos una interfaz de Swagger con las peticiones disponibles del proyecto.
 
-![alt text](image-32.png)
+![alt text](./Images/image-32.png)
 
 
 4. url del proyecto desplegado en **Railway**
@@ -216,4 +216,70 @@ npm run dev // Inica el proyecto en modo desarrollo
 
 
 ## Fontend
-  Se realizara en Angular 18.
+
+**Se realizara en Angular 18.**
+
+Descarga Node.js:
+
+Ve al sitio oficial de Node.js: https://nodejs.org.
+
+Instala desde la consola del equipo
+
+```C#
+
+npm install -g @angular
+
+```
+
+
+**Estos comandos son para documentacion solo de conocimiento no se deben ejecutar**
+
+Se usan los siguientes comandos para crear el programa del front
+
+
+```javascript
+ng new
+
+Escribimos el nombre {{LumiFrontend}}
+
+seleccionamos {{SCSS}}
+
+Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? se pone como Y
+
+```
+**Se debe ejecuta solo una vez cuando se va a iniciar el programa por primera vez**
+
+```javascript
+   npm install
+```
+
+
+** Para iniciar el programa de debe ejecugar **
+
+```javascript
+   ng serve -o
+```
+
+Este comando les abria el navegador el cual se vera de la siguiente manera.
+![alt text](./Images/image-38.png)
+
+![alt text](./Images/image-39.png)
+
+Una vez logueado se va a ver la siguiente pagina
+
+![alt text](./Images/image-40.png)
+
+en ella se tiene el home de la tienda
+
+Se añaden los productos y e ven de la siguiente manera encima del carrito
+
+![alt text](./Images/image-41.png)
+
+si se da clic al carrito se va a la zona de compra
+
+![alt text](./Images/image-42.png)
+
+En el menu de la izquierda aparecen las carpetas y archivos de la logica de la tienda.
+
+![alt text](./Images/image-43.png)
+s

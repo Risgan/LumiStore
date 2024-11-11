@@ -1,0 +1,124 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    background: #043853;
+    // background: #053F5C;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.head {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    // background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+    img {
+        height: 60px;
+        border-radius: 10px;
+    }
+}
+
+.acciones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo {
+    height: 8px;
+
+    h3 {
+        color: white;
+        font-size: 74px;
+        // background: red;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        margin-top: 6px;
+        color: #ffa64d;
+        // color: #f27f0c;
+    }
+}
+
+.center-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen-recorte {
+    width: 370px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.carrusel {
+    margin-top: 25px;
+}
+
+.tarjeta {
+    box-shadow: 6px 6px 6px 0px rgba(0, 0, 0, 0.25);
+    width: 250px;
+    height: 300px;
+    background: #d3e9ed;
+    border-radius: 15px;
+}
+
+.products {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.nombre {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #F27F0C;
+}
+
+.p-tarjeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.descripcion {
+    margin: 10px;
+}
+
+.images {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        // width: 50%;
+        height: 120px;
+        border-radius: 12px;
+    }
+}
+
+.p-badge{
+    position: absolute;
+    right: 1px;
+    top: 1px;
+}

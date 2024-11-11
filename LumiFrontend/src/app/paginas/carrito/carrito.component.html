@@ -1,0 +1,21 @@
+<p-toast />
+
+<div class="carrito-container">
+    <h2>Carrito de Compras</h2>
+    <form>
+        <div class="productos-lista">
+            <h3>Productos</h3>
+            <ul>
+                @for (producto of productos; track $index) {
+                    <li >
+                        {{ producto.titulo }} - {{ producto.precio | currency:'USD':'symbol':'1.0-0'}}
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="acciones">
+            <p-button label="Cancelar" [rounded]="true" severity="danger" (onClick)="cancelar()" />
+            <p-button label="Comprar" [rounded]="true" severity="success" (onClick)="comprar()" />
+        </div>
+    </form>
+</div>
