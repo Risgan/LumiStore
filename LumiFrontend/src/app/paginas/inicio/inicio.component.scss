@@ -91,6 +91,14 @@
     justify-content: center;
     align-items: center;
     color: #F27F0C;
+
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #F27F0C;
+    width: 100%;
 }
 
 .p-tarjeta {
@@ -121,4 +129,10 @@
     position: absolute;
     right: 1px;
     top: 1px;
+}
+
+.eliminar-producto{
+    position: relative;
+    top: 10px;
+    right: 10px;
 }

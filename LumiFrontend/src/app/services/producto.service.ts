@@ -31,7 +31,7 @@ export class ProductoService {
     return this.http.put<Producto>(`${this.apiUrl}/${id}`, producto);
   }
 
-  deleteProducto(id: string): Observable<void> {
+  deleteProducto(id: string|undefined): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
@@ -49,6 +49,10 @@ export class ProductoService {
 
   deleteAllProductCart(): void {
     this.listCart = [];
+  }
+
+  crearUsuario(usuario:any){
+    return this.http.post('https://lumistore-production.up.railway.app/api/usuarios', usuario);
   }
 
 }
