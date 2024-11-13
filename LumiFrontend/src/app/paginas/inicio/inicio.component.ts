@@ -5,11 +5,18 @@ import { Producto } from '../../models/producto';
 import { ProductoService } from '../../services/producto.service';
 import { Router } from '@angular/router';
 import { BadgeModule } from 'primeng/badge';
+import { DialogModule } from 'primeng/dialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [ButtonModule, CarouselModule, BadgeModule],
+  imports: [ButtonModule,InputNumberModule,InputTextModule, InputTextareaModule, FormsModule, CarouselModule, BadgeModule, FileUploadModule, DialogModule, CommonModule],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
   encapsulation: ViewEncapsulation.None
@@ -29,19 +36,21 @@ export class InicioComponent implements OnInit, AfterViewInit {
     { breakpoint: '767px', numVisible: 1, numScroll: 1 }
   ];
 
-  productos: Producto[] = []; 
+  productos: Producto[] = [];
   selectedProduct: Producto[] = this.productoService.getProductCart();
+  displayDialog: boolean = false;
+  nuevoProducto: Producto = { titulo: '', precio: 0, descripcion: '', imagenes: [] };
 
   constructor(
     private readonly productoService: ProductoService,
     private readonly router: Router
   ) { }
-  
+
 
   ngOnInit() {
     // setTimeout(() => {
-      
-      this.loadData();
+
+    this.loadData();
     // }, 6000);
 
   }
@@ -67,7 +76,7 @@ export class InicioComponent implements OnInit, AfterViewInit {
 
   }
 
-  goCarrito(){
+  goCarrito() {
     // this.productoService.
     // this.productoService.getProductos().subscribe( (productos: any) => {
     //   console.log(productos, productos.length);
@@ -75,5 +84,47 @@ export class InicioComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/carrito']);
   }
 
-  
+  agregarNuevoProducto() {
+    this.displayDialog = true;
+  }
+
+  onUpload(event: any) {
+    debugger
+    console.log(event);
+    const file = event.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const base64Image = e.target.result;
+      this.nuevoProducto.imagenes.push(base64Image);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  guardarProducto() {
+    console.log(this.nuevoProducto);
+    
+    this.productoService.createProducto(this.nuevoProducto).subscribe({
+      next: (producto) => {
+        console.log(producto);
+        this.loadData();
+      },
+      error: (error) => {
+        console.error('Error al guardar producto:', error);
+      }
+    });
+    this.displayDialog = false;
+    this.nuevoProducto = { titulo: '', precio: 0, descripcion: '', imagenes: [] };
+  }
+
+  eliminarProducto(producto: Producto) {
+    this.productoService.deleteProducto(producto.id).subscribe({
+      next: () => {
+        console.log('Producto eliminado');
+        this.loadData();
+      },
+      error: (error) => {
+        console.error('Error al eliminar producto:', error);
+      }
+    });
+  }
 }

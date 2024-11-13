@@ -39,7 +39,7 @@
                 <div class="border-1 surface-border border-round m-2 p-3">
                     <div class="mb-3">
                         <div class="relative mx-auto center-image">
-                            <img src="{{ ban.image }}" class="w-full border-round imagen-recorte" />
+                            <img  src="{{ ban.image }}" class="w-full border-round imagen-recorte" />
                         </div>
                     </div>
                 </div>
@@ -47,16 +47,24 @@
         </p-carousel>
     </div>
 
+    <div class="add-product">
+        <p-button icon="pi pi-plus" label="Añadir Producto" class="p-button-rounded p-button-primary" (click)="agregarNuevoProducto()"></p-button>
+    </div>
+
     <div class="products">
         @for (producto of productos; track $index) {
         <div class="tarjeta">
             <div class="nombre">
                 <h3>{{producto.titulo}}</h3>
+                <div class="eliminar-producto">
+                    <p-button icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="eliminarProducto(producto)"></p-button>
+                </div>
             </div>
             <div class="images">
                 <!-- <img src="/Images/Productos/1.jpg" alt=""> -->
                  @if (producto.imagenes) {
                      <img src="data:image/jpeg;base64,{{producto.imagenes[0]}}" alt="">
+                     <img src="{{producto.imagenes[0]}}" alt="">
                  }
             </div>
             <div class="descripcion">
@@ -79,3 +87,35 @@
 
 </main>
 <footer></footer>
+
+<p-dialog header="Añadir Producto" [(visible)]="displayDialog" [modal]="true" [closable]="false" [style]="{width: '50vw'}">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="titulo">Título</label>
+            <input id="titulo" type="text" pInputText [(ngModel)]="nuevoProducto.titulo" />
+
+        </div>
+        <div class="p-field">
+            <label for="precio">Precio</label>
+            <p-inputNumber id="precio" [(ngModel)]="nuevoProducto.precio" mode="currency" currency="USD"></p-inputNumber>
+        </div>
+        <div class="p-field">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" pInputTextarea [(ngModel)]="nuevoProducto.descripcion"></textarea>
+
+        </div>
+        <div class="p-field">
+            <label for="imagenes">Imagen</label>
+            <p-fileUpload mode="basic" 
+            chooseLabel="Subir Imagen" 
+            chooseIcon="pi pi-upload"
+            accept="image/*" 
+            maxFileSize="1000000" 
+            (onSelect)="onUpload($event)" ></p-fileUpload>
+        </div>
+    </div>
+    <p-footer>
+        <p-button label="Guardar" icon="pi pi-check" (click)="guardarProducto()"></p-button>
+        <p-button label="Cancelar" icon="pi pi-times" (click)="displayDialog=false"></p-button>
+    </p-footer>
+</p-dialog>
