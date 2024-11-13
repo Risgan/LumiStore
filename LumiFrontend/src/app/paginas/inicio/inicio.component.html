@@ -21,9 +21,30 @@
 
                 </div>
                 <div class="usuario">
-                    <p-button icon="pi pi-user" />
+                    <p-button icon="pi pi-user" (click)="showUserDialog()"/>
 
                 </div>
+
+            <p-dialog header="Usuario" [(visible)]="displayUserDialog" [modal]="true" [closable]="false" [style]="{width: '50vw'}">
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label for="nombreUsuario">Nombre de Usuario</label>
+                        <input id="nombreUsuario" type="text" pInputText [(ngModel)]="usuario.nombreUsuario" />
+                    </div>
+                    <div class="p-field">
+                        <label for="correo">Correo</label>
+                        <input id="correo" type="email" pInputText [(ngModel)]="usuario.correo" />
+                    </div>
+                    <div class="p-field">
+                        <label for="contraseña">Contraseña</label>
+                        <input id="contraseña" type="password" pInputText [(ngModel)]="usuario.contrasena" />
+                    </div>
+                </div>
+                <p-footer>
+                    <p-button label="Guardar" icon="pi pi-check" (click)="guardarUsuario()"></p-button>
+                    <p-button label="Cancelar" icon="pi pi-times" (click)="displayUserDialog=false"></p-button>
+                </p-footer>
+            </p-dialog>
             </div>
         </div>
     </header>

@@ -40,6 +40,14 @@ export class InicioComponent implements OnInit, AfterViewInit {
   selectedProduct: Producto[] = this.productoService.getProductCart();
   displayDialog: boolean = false;
   nuevoProducto: Producto = { titulo: '', precio: 0, descripcion: '', imagenes: [] };
+  displayUserDialog: boolean = false;
+  usuario: any = {
+    nombreUsuario: '',
+    correo: '',
+    contrasena: ''
+  };
+
+  userDialogHeader: string = 'Agregar Usuario';
 
   constructor(
     private readonly productoService: ProductoService,
@@ -126,5 +134,26 @@ export class InicioComponent implements OnInit, AfterViewInit {
         console.error('Error al eliminar producto:', error);
       }
     });
+  }
+
+  showUserDialog() {
+    this.displayUserDialog = true;
+  }
+
+  guardarUsuario() {
+    console.log(this.usuario);
+
+    this.usuario.contraseña = this.usuario.contrasena;
+    delete this.usuario.contrasena;
+    this.productoService.crearUsuario(this.usuario).subscribe({
+      next: (usuario) => {
+        console.log('Usuario guardado:', usuario);
+        // Aquí puedes agregar lógica adicional después de guardar el usuario
+      },
+      error: (error) => {
+        console.error('Error al guardar usuario:', error);
+      }
+    });
+    this.displayUserDialog = false;
   }
 }
